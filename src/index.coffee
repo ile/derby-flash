@@ -18,8 +18,8 @@ flash.init = (app) ->
 
 	app.on 'render', show
 
-	app.flash = (type, msg, with_timer) ->
-		this.view.model.push "_flashq.#{type}", msg?.message or msg
+	app.flash = (type, msg) ->
+		this.view.model.push "_flashq.#{type}", msg
 
 	originalRouter = app.router
 

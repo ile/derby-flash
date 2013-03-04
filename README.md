@@ -12,7 +12,7 @@ app = (flash.init(derby.createApp(module)
 
 ```
 
-In code.
+In code:
 
 ```coffeescript
 app.flash 'error', 'An error happened!'
