@@ -69,3 +69,7 @@ Using it:
 <app:flash>
 
 ```
+
+##Issues
+
+Still new. Be cautious. There are some known problems with server side requests.
