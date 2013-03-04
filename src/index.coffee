@@ -25,7 +25,10 @@ flash.init = (app) ->
 
 	middleware = (req, res, next) ->
 		model = req.getModel()
-		model.set '_flashq2', req.flash()
+
+		if req.flash
+			model.set '_flashq2', req.flash()
+
 		(originalRouter())(req, res, next)
 
 	app.router = ->
