@@ -19,6 +19,8 @@ make
 
 ###Initialization
 
+In app.js:
+
 ```coffeescript
 derby = require 'derby'
 flash = require 'derby-flash'
