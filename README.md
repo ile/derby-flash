@@ -4,8 +4,6 @@ This is similar to [connect-flash](https://github.com/jaredhanson/connect-flash)
 
 ##Installation
 
-##Usage
-
 `npm install derby-flash`
 
 Or from the sources:
@@ -16,6 +14,8 @@ cd derby-flash
 npm install
 make
 ```
+
+##Usage
 
 ###Initialization
 
