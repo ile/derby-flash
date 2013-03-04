@@ -4,6 +4,8 @@ This is similar to [connect-flash](https://github.com/jaredhanson/connect-flash)
 
 ##Usage
 
+###Initialization
+
 ```coffeescript
 derby = require 'derby'
 flash = require 'derby-flash'
@@ -12,13 +14,13 @@ app = (flash.init(derby.createApp(module)
 
 ```
 
-In code:
+###In code
 
 ```coffeescript
 app.flash 'error', 'An error happened!'
 ```
 
-In templates:
+###In templates
 
 ```html
 
@@ -37,5 +39,10 @@ In templates:
             <div class="alert static alert-warning">{:msg}</div>
         {/}
     {/}
+
+```
+
+```html
+<app:flash>
 
 ```
