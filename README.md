@@ -10,7 +10,7 @@ This is similar to [connect-flash](https://github.com/jaredhanson/connect-flash)
 derby = require 'derby'
 flash = require 'derby-flash'
 
-app = (flash.init(derby.createApp(module)
+app = flash.init(derby.createApp(module)
 
 ```
 
