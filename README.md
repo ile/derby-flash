@@ -70,6 +70,13 @@ Using it:
 
 ```
 
+#FAQ
+
+OK, I made this one up myself. But questions that may come up:
+
+Q: What if I want to make a dismissible notification?
+A: You can use `model.del(node)` to delete a notification.
+
 ##Issues
 
 Still new. Be cautious. There are some known problems with server side requests.
