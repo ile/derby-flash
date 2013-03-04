@@ -2,7 +2,20 @@
 
 This is similar to [connect-flash](https://github.com/jaredhanson/connect-flash) but for [Derby](http://derby.js). 
 
+##Installation
+
 ##Usage
+
+`npm install derby-flash`
+
+Or from the sources:
+
+```
+git clone git://github.com/ile/derby-flash.git
+cd derby-flash
+npm install
+make
+```
 
 ###Initialization
 
