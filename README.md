@@ -35,7 +35,7 @@ app.flash 'error', 'An error happened!'
 
 ###In templates
 
-Defining the template:
+Defining the template component:
 
 ```html
 
