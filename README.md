@@ -35,6 +35,8 @@ app.flash 'error', 'An error happened!'
 
 ###In templates
 
+Defining the template:
+
 ```html
 
 <flash:>
@@ -54,6 +56,8 @@ app.flash 'error', 'An error happened!'
     {/}
 
 ```
+
+Using it:
 
 ```html
 <app:flash>
