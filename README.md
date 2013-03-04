@@ -2,7 +2,7 @@
 
 This is similar to [connect-flash](https://github.com/jaredhanson/connect-flash) but for [Derby](http://derby.js). 
 
-Derby-flash should work along connect-flash; the messages should flow through effortlessly despite on which module they are set.
+Derby-flash should work along connect-flash; the messages from connect-flash will be accessible from this module.
 
 ##Installation
 
