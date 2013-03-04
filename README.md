@@ -23,7 +23,7 @@ make
 derby = require 'derby'
 flash = require 'derby-flash'
 
-app = flash.init(derby.createApp(module)
+app = flash.init(derby.createApp(module))
 
 ```
 
