@@ -21,18 +21,20 @@ make
 
 In app.js:
 
-```coffeescript
-derby = require 'derby'
-flash = require 'derby-flash'
+```javascript
 
-app = flash.init(derby.createApp(module))
+var derby = require('derby')
+    , flash = require('derby-flash')
+    , app = flash.init(derby.createApp(module));
+
 
 ```
 
 ###In code
 
-```coffeescript
-app.flash 'error', 'An error happened!'
+```javascript
+app.flash('error', 'An error happened!');
+
 ```
 
 ###In templates
