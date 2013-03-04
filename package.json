@@ -1,0 +1,28 @@
+{
+  "author": "Ilkka Huotari <ilkkah@gmail.com>",
+  "name": "derby-flash",
+  "description": "Flash messages for Derby",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ile/derby-flash.git"
+  },
+  "private": false,
+  "main": "lib/index",
+  "directories": {
+    "lib": "lib"
+  },
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "devDependencies": {
+    "coffee-script": ">=1.3.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "flash",
+    "derby"
+  ]
+}

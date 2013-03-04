@@ -1,0 +1,9 @@
+node_modules
+.DS_Store
+public/gen
+public/upload
+public/file-uploader
+lib/
+gen
+*.swp
+*.gz
