@@ -5,10 +5,16 @@ This is similar to [connect-flash](https://github.com/jaredhanson/connect-flash)
 ##Usage
 
 ```coffeescript
+derby = require 'derby'
 flash = require 'derby-flash'
 
 app = (flash.init(derby.createApp(module)
 
+```
+
+In code.
+
+```coffeescript
 app.flash 'error', 'An error happened!'
 ```
 
