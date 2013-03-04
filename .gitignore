@@ -3,7 +3,6 @@ node_modules
 public/gen
 public/upload
 public/file-uploader
-lib/
 gen
 *.swp
 *.gz
