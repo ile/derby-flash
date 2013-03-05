@@ -4,6 +4,12 @@ This is similar to [connect-flash](https://github.com/jaredhanson/connect-flash)
 
 Derby-flash should work along connect-flash; the messages from connect-flash will be accessible from this module.
 
+##Requirements
+
+- [node](http://nodejs.org)
+- [Derby](http://derbyjs.com/)
+
+
 ##Installation
 
 Using [npm](https://npmjs.org/)
@@ -74,3 +80,8 @@ A: You can use `model.del(node)` to delete a notification.
 ##Issues
 
 Still new. Be cautious. There are some known problems with server side requests.
+
+##Credits
+
+- https://github.com/jamesknelson/derby-i18n for the module structure
+- https://github.com/codeparty for Derby
