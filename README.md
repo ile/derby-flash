@@ -46,23 +46,13 @@ model.flash('error', 'An error happened!');
 Defining the template component:
 
 ```html
-
 <flash:>
     {#if _flash}
-        {#each _flash.info as :msg}
-            <div class="alert static alert-info">{:msg}</div>
-        {/}
-        {#each _flash.error as :msg}
-            <div class="alert static alert-error">{:msg}</div>
-        {/}
-        {#each _flash.success as :msg}
-            <div class="alert static alert-success">{:msg}</div>
-        {/}
-        {#each _flash.warning as :msg}
-            <div class="alert static alert-warning">{:msg}</div>
-        {/}
+        {#each _flash.success as :msg}<div class="alert static alert-success">{:msg}</div>{/}
+        {#each _flash.info as :msg}<div class="alert static alert-info">{:msg}</div>{/}
+        {#each _flash.warning as :msg}<div class="alert static alert-warning">{:msg}</div>{/}
+        {#each _flash.error as :msg}<div class="alert static alert-error">{:msg}</div>{/}
     {/}
-
 ```
 
 Using it:
