@@ -84,4 +84,3 @@ Still new. Be cautious. There are some known problems with server side requests.
 ##Credits
 
 - https://github.com/jamesknelson/derby-i18n for the module structure
-- https://github.com/codeparty for Derby
