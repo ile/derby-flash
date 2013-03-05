@@ -1,6 +1,6 @@
 #Derby-flash
 
-This is similar to [connect-flash](https://github.com/jaredhanson/connect-flash) but for [Derby](http://derby.js). 
+This is similar to [connect-flash](https://github.com/jaredhanson/connect-flash) but for [Derby](http://derbyjs.com/). 
 
 Derby-flash should work along connect-flash; the messages from connect-flash will be accessible from this module.
 
