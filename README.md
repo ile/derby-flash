@@ -39,7 +39,7 @@ model.flash('error', 'An error happened!');
 
 ```
 
-... where `model` if your model object, wherever it will be available.
+... where `model` if your model object, wherever it is available.
 
 ###In templates
 
