@@ -6,7 +6,7 @@ Derby-flash should work along connect-flash; the messages from connect-flash wil
 
 ##Installation
 
-Using [NPM](https://npmjs.org/)
+Using [npm](https://npmjs.org/)
 
 `npm install derby-flash`
 
