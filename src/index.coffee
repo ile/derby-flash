@@ -1,3 +1,5 @@
+racer = require('racer')
+Model = racer["protected"].Model
 flash = module.exports
 
 flash.init = (app) ->
@@ -16,11 +18,11 @@ flash.init = (app) ->
 		model.del '_flashq'
 		model.del '_flashq2'
 
+	add = (type, msg) ->
+		@push "_flashq.#{type}", msg
+
 	app.on 'render', show
-
-	app.flash = (type, msg) ->
-		this.view.model.push "_flashq.#{type}", msg
-
+	Model::flash = add
 	originalRouter = app.router
 
 	middleware = (req, res, next) ->

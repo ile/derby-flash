@@ -35,9 +35,11 @@ var derby = require('derby')
 ###In code
 
 ```javascript
-app.flash('error', 'An error happened!');
+model.flash('error', 'An error happened!');
 
 ```
+
+... where `model` if your model object, wherever it will be available.
 
 ###In templates
 
