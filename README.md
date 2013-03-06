@@ -75,7 +75,7 @@ Using it:
 OK, I made this one up myself. But questions that may come up:
 
 Q: What if I want to make a dismissible notification?  
-A: You can use `model.del(node)` to delete a notification.
+A: You can, for example, use `model.del(node)` to delete a notification. `node` is a DOM or jQuery node.
 
 ##Issues
 
