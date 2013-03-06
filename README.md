@@ -6,7 +6,7 @@ Derby-flash should work along connect-flash; the messages from connect-flash wil
 
 ##Requirements
 
-- [node](http://nodejs.org)
+- [Node.js](http://nodejs.org)
 - [Derby](http://derbyjs.com/)
 
 
