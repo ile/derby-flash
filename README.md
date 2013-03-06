@@ -40,7 +40,7 @@ var derby = require('derby')
 
 ```
 
-###In code
+###Adding messages
 
 ```javascript
 model.flash('error', 'An error happened!');
