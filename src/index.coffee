@@ -19,7 +19,10 @@ flash.init = (app) ->
 		model.del '_flashq2'
 
 	add = (type, msg) ->
-		@push "_flashq.#{type}", msg
+		if @req?.flash
+			@req.flash type, msg
+		else
+			@push "_flashq.#{type}", msg
 
 	app.on 'render', show
 	Model::flash = add
