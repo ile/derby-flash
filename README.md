@@ -32,17 +32,25 @@ make
 In app.js:
 
 ```javascript
-
-var derby = require('derby')
-    , flash = require('derby-flash')
-    , app = flash.init(derby.createApp(module));
-
-
+var app = require('derby').createApp(module)
+	.use(require('derby-flash'), { useToast: true });
 ```
+
+Derby-flash also accepts an `options` object:
+
+```javascript
+var app = require('derby').createApp(module)
+	.use(require('derby-flash'), { useToast: true });
+```
+
+Currently the supported options are:
+
+- *useToast: boolean*  
+	use [derby-ui-toast](https://github.com/ile/derby-ui-toast) to show the messages, if available.
 
 ###In templates
 
-Defining the template component:
+Defining the template component (if not using derby-ui-toast):
 
 ```html
 <flash:>

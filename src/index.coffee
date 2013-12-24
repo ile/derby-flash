@@ -1,8 +1,10 @@
 racer = require('racer')
 Model = racer.Model
-flash = module.exports
+config =
+  filename: __filename
+  ns: 'derby-flash'
 
-flash.init = (app, options) ->
+module.exports = (app, options) ->
 
 	options ||= {}
 
@@ -42,4 +44,4 @@ flash.init = (app, options) ->
 
 	app.router = ->	middleware
 
-	app
+	app.createLibrary config, options
