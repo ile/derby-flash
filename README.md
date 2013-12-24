@@ -33,7 +33,7 @@ In app.js:
 
 ```javascript
 var app = require('derby').createApp(module)
-	.use(require('derby-flash'), { useToast: true });
+	.use(require('derby-flash'));
 ```
 
 Derby-flash also accepts an `options` object:
