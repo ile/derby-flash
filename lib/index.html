@@ -1,0 +1,9 @@
+<flash:>
+	<div class="derby-flash">
+	    {#if _page.flash}
+	        {#each _page.flash.success as :msg}<div class="flash flash-static flash-success">{{:msg}}</div>{/}
+	        {#each _page.flash.info as :msg}<div class="flash flash-static flash-info">{{:msg}}</div>{/}
+	        {#each _page.flash.warning as :msg}<div class="flash flash-static flash-warning">{{:msg}}</div>{/}
+	        {#each _page.flash.error as :msg}<div class="alert flash-static flash-error">{{:msg}}</div>{/}
+	    {/}
+    </div>
