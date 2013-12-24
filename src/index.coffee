@@ -1,42 +1,45 @@
 racer = require('racer')
-Model = racer["protected"].Model
+Model = racer.Model
 flash = module.exports
 
-flash.init = (app) ->
+flash.init = (app, options) ->
 
-	show = ->
+	options ||= {}
+
+	app.on 'render', ->
 		model = this.view.model
-		flashq = model.get('_flashq') or {}
-		flashq2 = model.get('_flashq2') or {}
+		flashq = model.get('_flash.flashq') or {}
+		flashq2 = model.get('_flash.flashq2') or {}
 
 		for type of flashq2
 			flashq[type] ||= []
 			for msg in flashq2[type]
 				flashq[type].push msg
 
-		model.set '_flash', flashq
-		model.del '_flashq'
-		model.del '_flashq2'
+		if options.useToast
+			for type, msgs of flashq
+				for msg in msgs
+					model.toast type, msg
+		else
+			model.set '_page.flash', flashq
+		model.del '_flash.flashq'
+		model.del '_flash.flashq2'
 
-	add = (type, msg) ->
+	Model::flash = (type, msg) ->
 		if @req?.flash
 			@req.flash type, msg
 		else
-			@push "_flashq.#{type}", msg
+			@push "_flash.flashq.#{type}", msg
 
-	app.on 'render', show
-	Model::flash = add
 	originalRouter = app.router
 
 	middleware = (req, res, next) ->
-		model = req.getModel()
-
 		if req.flash
-			model.set '_flashq2', req.flash()
+			model = req.getModel()
+			model.set '_flash.flashq2', req.flash()
 
 		(originalRouter())(req, res, next)
 
-	app.router = ->
-		middleware
+	app.router = ->	middleware
 
 	app

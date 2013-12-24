@@ -40,26 +40,17 @@ var derby = require('derby')
 
 ```
 
-###Adding messages
-
-```javascript
-model.flash('error', 'An error happened!');
-
-```
-
-... where `model` if your model object, wherever it is available.
-
 ###In templates
 
 Defining the template component:
 
 ```html
 <flash:>
-    {#if _flash}
-        {#each _flash.success as :msg}<div class="alert static alert-success">{{:msg}}</div>{/}
-        {#each _flash.info as :msg}<div class="alert static alert-info">{{:msg}}</div>{/}
-        {#each _flash.warning as :msg}<div class="alert static alert-warning">{{:msg}}</div>{/}
-        {#each _flash.error as :msg}<div class="alert static alert-error">{{:msg}}</div>{/}
+    {#if _page.flash}
+        {#each _page.flash.success as :msg}<div class="alert static alert-success">{{:msg}}</div>{/}
+        {#each _page.flash.info as :msg}<div class="alert static alert-info">{{:msg}}</div>{/}
+        {#each _page.flash.warning as :msg}<div class="alert static alert-warning">{{:msg}}</div>{/}
+        {#each _page.flash.error as :msg}<div class="alert static alert-error">{{:msg}}</div>{/}
     {/}
 ```
 
@@ -69,6 +60,15 @@ Using it:
 <app:flash>
 
 ```
+
+###Adding messages
+
+```javascript
+model.flash('error', 'An error happened!');
+
+```
+
+... where `model` if your model object, wherever it is available.
 
 ##FAQ
 
