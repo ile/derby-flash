@@ -29,18 +29,14 @@ make
 
 ###Initialization
 
-In app.js:
-
 ```javascript
-var app = require('derby').createApp(module)
-	.use(require('derby-flash'));
+app.component(require('derby-flash')(app))
 ```
 
 Derby-flash also accepts an `options` object:
 
 ```javascript
-var app = require('derby').createApp(module)
-	.use(require('derby-flash'), { useToast: true });
+app.component(require('derby-flash')(app, { useToast: true }))
 ```
 
 Currently the supported options are:
@@ -53,8 +49,7 @@ Currently the supported options are:
 If you are not using derby-ui-toast along with derby-flash, you can use the built-in template:
 
 ```html
-<derby-flash:flash>
-
+<view name="derby-flash"></view>
 ```
 
 ###Adding messages

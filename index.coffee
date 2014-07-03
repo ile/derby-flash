@@ -9,7 +9,7 @@ module.exports = (app, options) ->
 		view: __dirname
 
 		init: ->
-			model = this.model
+			model = this.model.root
 			flashq = model.get('_flash.flashq') or {}
 			flashq2 = model.get('_flash.flashq2') or {}
 
@@ -24,6 +24,7 @@ module.exports = (app, options) ->
 						model.toast type, msg
 			else
 				model.set '_page.flash', flashq
+
 			model.del '_flash.flashq'
 			model.del '_flash.flashq2'
 
@@ -31,14 +32,14 @@ module.exports = (app, options) ->
 			if @req?.flash
 				@req.flash type, msg
 			else
-				@push "_flash.flashq.#{type}", msg
+				@root.push "_flash.flashq.#{type}", msg
 
 		originalRouter = app.router
 
 		middleware = (req, res, next) ->
 			if req.flash
 				model = req.getModel()
-				model.set '_flash.flashq2', req.flash()
+				model.root.set '_flash.flashq2', req.flash()
 
 			(originalRouter())(req, res, next)
 

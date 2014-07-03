@@ -17,7 +17,7 @@ module.exports = function(app, options) {
 
     Flash.prototype.init = function() {
       var flashq, flashq2, model, msg, msgs, type, _i, _j, _len, _len1, _ref;
-      model = this.model;
+      model = this.model.root;
       flashq = model.get('_flash.flashq') || {};
       flashq2 = model.get('_flash.flashq2') || {};
       for (type in flashq2) {
@@ -48,7 +48,7 @@ module.exports = function(app, options) {
       if ((_ref = this.req) != null ? _ref.flash : void 0) {
         return this.req.flash(type, msg);
       } else {
-        return this.push("_flash.flashq." + type, msg);
+        return this.root.push("_flash.flashq." + type, msg);
       }
     };
 
@@ -58,7 +58,7 @@ module.exports = function(app, options) {
       var model;
       if (req.flash) {
         model = req.getModel();
-        model.set('_flash.flashq2', req.flash());
+        model.root.set('_flash.flashq2', req.flash());
       }
       return (originalRouter())(req, res, next);
     };
