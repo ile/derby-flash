@@ -12,18 +12,7 @@ Derby-flash should work along connect-flash; the messages from connect-flash wil
 
 ##Installation
 
-Using [npm](https://npmjs.org/)
-
 `npm install derby-flash`
-
-Or from the sources:
-
-```
-git clone git://github.com/ile/derby-flash.git
-cd derby-flash
-npm install
-make
-```
 
 ##Usage
 
