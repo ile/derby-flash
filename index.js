@@ -15,7 +15,7 @@ module.exports = function(app, options) {
 
     Flash.prototype.view = __dirname;
 
-    Flash.prototype.init = function() {
+    Flash.prototype.create = function() {
       var flashq, flashq2, model, msg, msgs, type, _i, _j, _len, _len1, _ref;
       model = this.model.root;
       flashq = model.get('_flash.flashq') || {};

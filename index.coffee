@@ -8,7 +8,7 @@ module.exports = (app, options) ->
 	class Flash
 		view: __dirname
 
-		init: ->
+		create: ->
 			model = this.model.root
 			flashq = model.get('_flash.flashq') or {}
 			flashq2 = model.get('_flash.flashq2') or {}
