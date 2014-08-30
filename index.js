@@ -57,6 +57,7 @@ module.exports = function(app, options) {
     middleware = function(req, res, next) {
       var model;
       if (req.flash) {
+        console.log(req.flash());
         model = req.getModel();
         model.root.set('_flash.flashq2', req.flash());
       }
