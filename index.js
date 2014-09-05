@@ -15,9 +15,9 @@ module.exports = function(app, options) {
 
     Flash.prototype.view = __dirname;
 
-    Flash.prototype.init = function() {
+    app.on('render', function(app) {
       var flashq, flashq2, model, msg, msgs, type, _i, _j, _len, _len1, _ref;
-      model = this.model.root;
+      model = app.model;
       flashq = model.get('_flash.flashq') || {};
       flashq2 = model.get('_flash.flashq2') || {};
       for (type in flashq2) {
@@ -28,7 +28,7 @@ module.exports = function(app, options) {
           flashq[type].push(msg);
         }
       }
-      if (options.useToast) {
+      if (options.useToast && model.toast) {
         for (type in flashq) {
           msgs = flashq[type];
           for (_j = 0, _len1 = msgs.length; _j < _len1; _j++) {
@@ -41,7 +41,7 @@ module.exports = function(app, options) {
       }
       model.del('_flash.flashq');
       return model.del('_flash.flashq2');
-    };
+    });
 
     Model.prototype.flash = function(type, msg) {
       var _ref;

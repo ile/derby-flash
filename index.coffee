@@ -8,8 +8,8 @@ module.exports = (app, options) ->
 	class Flash
 		view: __dirname
 
-		init: ->
-			model = this.model.root
+		app.on 'render', (app) ->
+			model = app.model
 			flashq = model.get('_flash.flashq') or {}
 			flashq2 = model.get('_flash.flashq2') or {}
 
@@ -18,7 +18,7 @@ module.exports = (app, options) ->
 				for msg in flashq2[type]
 					flashq[type].push msg
 
-			if options.useToast
+			if options.useToast and model.toast
 				for type, msgs of flashq
 					for msg in msgs
 						model.toast type, msg
