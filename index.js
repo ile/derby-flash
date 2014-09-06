@@ -16,31 +16,18 @@ module.exports = function(app, options) {
     Flash.prototype.view = __dirname;
 
     app.on('render', function(app) {
-      var flashq, flashq2, model, msg, msgs, type, _i, _j, _len, _len1, _ref;
+      var flashq, model, msg, _i, _len;
       model = app.model;
       flashq = model.get('_flash.flashq') || {};
-      flashq2 = model.get('_flash.flashq2') || {};
-      for (type in flashq2) {
-        flashq[type] || (flashq[type] = []);
-        _ref = flashq2[type];
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-          msg = _ref[_i];
-          flashq[type].push(msg);
-        }
-      }
       if (options.useToast && model.toast) {
-        for (type in flashq) {
-          msgs = flashq[type];
-          for (_j = 0, _len1 = msgs.length; _j < _len1; _j++) {
-            msg = msgs[_j];
-            model.toast(type, msg);
-          }
+        for (_i = 0, _len = flashq.length; _i < _len; _i++) {
+          msg = flashq[_i];
+          model.toast(msg.type, msg.msg);
         }
       } else {
         model.set('_page.flash', flashq);
       }
-      model.del('_flash.flashq');
-      return model.del('_flash.flashq2');
+      return model.del('_flash.flashq');
     });
 
     Model.prototype.flash = function(type, msg) {
@@ -48,17 +35,29 @@ module.exports = function(app, options) {
       if ((_ref = this.req) != null ? _ref.flash : void 0) {
         return this.req.flash(type, msg);
       } else {
-        return this.root.push("_flash.flashq." + type, msg);
+        return this.root.push("_flash.flashq", {
+          type: type,
+          msg: msg
+        });
       }
     };
 
     originalRouter = app.router;
 
     middleware = function(req, res, next) {
-      var model;
+      var model, msg, msgs, type, _i, _len;
       if (req.flash) {
         model = req.getModel();
-        model.root.set('_flash.flashq2', req.flash());
+        msgs = req.flash();
+        for (type in msgs) {
+          for (_i = 0, _len = type.length; _i < _len; _i++) {
+            msg = type[_i];
+            model.push("_flash.flashq", {
+              type: type,
+              msg: msg
+            });
+          }
+        }
       }
       return (originalRouter())(req, res, next);
     };

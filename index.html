@@ -1,9 +1,4 @@
 <index:>
 	<div class="derby-flash">
-	    {{if #root._page.flash}}
-	        {{each #root._page.flash.success as #msg}}<div class="flash flash-success">{{#msg}}</div>{{/}}
-	        {{each #root._page.flash.info as #msg}}<div class="flash flash-info">{{#msg}}</div>{{/}}
-	        {{each #root._page.flash.warning as #msg}}<div class="flash flash-warning">{{#msg}}</div>{{/}}
-	        {{each #root._page.flash.error as #msg}}<div class="alert flash-error">{{#msg}}</div>{{/}}
-		{{/}}
+		{{each #root._page.flash as #flash, #i}}<div class="flash flash-{{#flash.type}}"><span>{{#flash.msg}}</span></div>{{/each}}
     </div>

@@ -2,7 +2,7 @@
   "author": "Ilkka Huotari <ilkkah@gmail.com>",
   "name": "derby-flash",
   "description": "Flash messages for Derby",
-  "version": "0.6.5",
+  "version": "0.7.0",
   "repository": {
     "type": "git",
     "url": "git://github.com/ile/derby-flash.git"

@@ -30,8 +30,15 @@ app.component(require('derby-flash')(app, { useToast: true }))
 
 Currently the supported options are:
 
-- *useToast: boolean*  
+- **useToast: boolean**
 	use [derby-ui-toast](https://github.com/ile/derby-ui-toast) to show the messages, if available.
+
+###CSS
+
+Tis serves as an example stylesheet, import this from `index.styl` to use it. 
+```css
+@import '../../node_modules/derby-ui-toast/css/'
+```
 
 ###In templates
 
@@ -47,23 +54,7 @@ If you are not using derby-ui-toast along with derby-flash, you can use the buil
 model.flash('error', 'An error happened!');
 
 ```
-
 ... where `model` if your model object, wherever it is available.
-
-##FAQ
-
-OK, I made this one up myself. But questions that may come up:
-
-Q: What if I want to make a dismissible notification?  
-A: You can, for example, use `model.del(node)` to delete a notification. `node` is a DOM or jQuery node.
-
-##Issues
-
-Still new. Be cautious. There are some known problems with server side requests.
-
-##Credits
-
-- https://github.com/jamesknelson/derby-i18n for the module structure
 
 ##License
 
