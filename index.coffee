@@ -33,7 +33,7 @@ module.exports = (app, options) ->
 				model = req.getModel()
 				msgs = req.flash()
 				for type of msgs
-					for msg in type
+					for msg in msgs[type]
 						model.push "_flash.flashq", { type: type, msg: msg }
 
 			(originalRouter())(req, res, next)

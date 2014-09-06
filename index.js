@@ -45,13 +45,14 @@ module.exports = function(app, options) {
     originalRouter = app.router;
 
     middleware = function(req, res, next) {
-      var model, msg, msgs, type, _i, _len;
+      var model, msg, msgs, type, _i, _len, _ref;
       if (req.flash) {
         model = req.getModel();
         msgs = req.flash();
         for (type in msgs) {
-          for (_i = 0, _len = type.length; _i < _len; _i++) {
-            msg = type[_i];
+          _ref = msgs[type];
+          for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+            msg = _ref[_i];
             model.push("_flash.flashq", {
               type: type,
               msg: msg
