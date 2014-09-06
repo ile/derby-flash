@@ -52,7 +52,6 @@ Tis serves as an example stylesheet, import this from `index.styl` to use it.
 model.flash('error', 'An error happened!');
 
 ```
-... where `model` if your model object, wherever it is available.
 
 ##License
 
