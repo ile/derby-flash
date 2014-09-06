@@ -42,8 +42,6 @@ Tis serves as an example stylesheet, import this from `index.styl` to use it.
 
 ###In templates
 
-If you are not using derby-ui-toast along with derby-flash, you can use the built-in template:
-
 ```html
 <view name="derby-flash"></view>
 ```
