@@ -35,7 +35,7 @@ Currently the supported options are:
 
 ###CSS
 
-Tis serves as an example stylesheet, import this from `index.styl` to use it. 
+This serves as an example stylesheet, import this from `index.styl` to use it. 
 ```css
 @import '../../node_modules/derby-ui-toast/css/'
 ```
