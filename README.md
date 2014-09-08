@@ -35,14 +35,12 @@ Currently the supported options are:
 
 ###CSS
 
-Tis serves as an example stylesheet, import this from `index.styl` to use it. 
+This serves as an example stylesheet, import this from `index.styl` to use it. 
 ```css
 @import '../../node_modules/derby-ui-toast/css/'
 ```
 
 ###In templates
-
-If you are not using derby-ui-toast along with derby-flash, you can use the built-in template:
 
 ```html
 <view name="derby-flash"></view>
@@ -54,7 +52,6 @@ If you are not using derby-ui-toast along with derby-flash, you can use the buil
 model.flash('error', 'An error happened!');
 
 ```
-... where `model` if your model object, wherever it is available.
 
 ##License
 
