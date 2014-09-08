@@ -1,7 +1,7 @@
 <index:>
 	<div class="derby-flash">
-		{{each #root._page.flash.info as #flash}}<div class="flash flash-info"><span>{{#flash}}</span></div>{{/each}}
-		{{each #root._page.flash.success as #flash}}<div class="flash flash-success"><span>{{#flash}}</span></div>{{/each}}
-		{{each #root._page.flash.warning as #flash}}<div class="flash flash-warning"><span>{{#flash}}</span></div>{{/each}}
-		{{each #root._page.flash.error as #flash}}<div class="flash flash-error"><span>{{#flash}}</span></div>{{/each}}
+		{{each #root._page.flash.info as #flash}}<div class="flash flash-info"><span>{{unescaped #flash}}</span></div>{{/each}}
+		{{each #root._page.flash.success as #flash}}<div class="flash flash-success"><span>{{unescaped #flash}}</span></div>{{/each}}
+		{{each #root._page.flash.warning as #flash}}<div class="flash flash-warning"><span>{{unescaped #flash}}</span></div>{{/each}}
+		{{each #root._page.flash.error as #flash}}<div class="flash flash-error"><span>{{unescaped #flash}}</span></div>{{/each}}
     </div>
