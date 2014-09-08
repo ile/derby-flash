@@ -16,36 +16,59 @@ module.exports = function(app, options) {
     Flash.prototype.view = __dirname;
 
     app.on('render', function(app) {
-      var flashq, model, msg, _i, _len;
+      var flashq, model, msg, type, _i, _len, _ref;
       model = app.model;
       flashq = model.get('_flash.flashq') || {};
       if (options.useToast && model.toast) {
-        for (_i = 0, _len = flashq.length; _i < _len; _i++) {
-          msg = flashq[_i];
-          model.toast(msg.type, msg.msg);
+        if (flashq) {
+          for (type in flashq) {
+            _ref = flashq[type];
+            for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+              msg = _ref[_i];
+              if (options.useToast && model.toast) {
+                model.toast(type, msg);
+              }
+            }
+          }
         }
       } else {
-        model.set('_page.flash', flashq);
+        model.root.set('_page.flash', flashq);
       }
       return model.del('_flash.flashq');
     });
 
     Model.prototype.flash = function(type, msg) {
       var _ref;
-      if ((_ref = this.req) != null ? _ref.flash : void 0) {
-        return this.req.flash(type, msg);
-      } else {
-        return this.root.push("_flash.flashq", {
-          type: type,
-          msg: msg
-        });
+      if (type && msg) {
+        if ((_ref = this.req) != null ? _ref.flash : void 0) {
+          return this.req.flash(type, msg);
+        } else {
+          return this.root.push("_flash.flashq." + type, msg);
+        }
       }
+
+      /*
+      			else if type
+      				if @req?.flash
+      					@req.flash type
+      				else
+      					res = @root.get "_flash.flashq.#{type}"
+      					@root.del "_flash.flashq.#{type}"
+      					res
+      			else
+      				if @req?.flash
+      					@req.flash
+      				else
+      					all = @root.get "_flash.flashq"
+      					@root.del "_flash.flashq"
+      					all
+       */
     };
 
     originalRouter = app.router;
 
     middleware = function(req, res, next) {
-      var model, msg, msgs, type, _i, _len, _ref;
+      var model, msg, msgs, obj, type, _i, _len, _ref;
       if (req.flash) {
         model = req.getModel();
         msgs = req.flash();
@@ -53,10 +76,13 @@ module.exports = function(app, options) {
           _ref = msgs[type];
           for (_i = 0, _len = _ref.length; _i < _len; _i++) {
             msg = _ref[_i];
-            model.push("_flash.flashq", {
-              type: type,
-              msg: msg
-            });
+            if (typeof msg === 'string') {
+              model.push("_flash.flashq." + type, msg);
+            } else {
+              for (obj in msg) {
+                model.set("_flash.flashq." + type + "." + obj, msg[obj]);
+              }
+            }
           }
         }
       }

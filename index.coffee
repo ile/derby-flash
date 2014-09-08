@@ -13,18 +13,41 @@ module.exports = (app, options) ->
 			flashq = model.get('_flash.flashq') or {}
 
 			if options.useToast and model.toast
-				for msg in flashq
-					model.toast msg.type, msg.msg
+				if flashq
+					for type of flashq
+						for msg in flashq[type]
+							if options.useToast and model.toast
+								model.toast type, msg
 			else
-				model.set '_page.flash', flashq
+				model.root.set '_page.flash', flashq
 
 			model.del '_flash.flashq'
 
 		Model::flash = (type, msg) ->
-			if @req?.flash
-				@req.flash type, msg
+			# set if msg present
+			if type and msg
+				if @req?.flash
+					@req.flash type, msg
+				else
+					@root.push "_flash.flashq.#{type}", msg
+			# otherwise get
+			# not really needed
+			###
+			else if type
+				if @req?.flash
+					@req.flash type
+				else
+					res = @root.get "_flash.flashq.#{type}"
+					@root.del "_flash.flashq.#{type}"
+					res
 			else
-				@root.push "_flash.flashq", { type: type, msg: msg }
+				if @req?.flash
+					@req.flash
+				else
+					all = @root.get "_flash.flashq"
+					@root.del "_flash.flashq"
+					all
+			###
 
 		originalRouter = app.router
 
@@ -34,7 +57,11 @@ module.exports = (app, options) ->
 				msgs = req.flash()
 				for type of msgs
 					for msg in msgs[type]
-						model.push "_flash.flashq", { type: type, msg: msg }
+						if typeof msg is 'string'
+							model.push "_flash.flashq.#{type}", msg
+						else # is object
+							for obj of msg
+								model.set "_flash.flashq.#{type}.#{obj}", msg[obj]
 
 			(originalRouter())(req, res, next)
 
