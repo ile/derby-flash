@@ -1,14 +1,16 @@
 .flash
-  padding 1em
+  padding 1.5em
   margin 2em 0
   border solid 1px #ccc
-  border-width 1px 1px 1px 10px
-  font-weight bold
+  border-width 1px
+  border-radius 4px
+  font-weight 600
+  animation 0.3s appear
 
 .flash.flash-success
-  background #efe
-  border-color #ada
-  color #387F38
+  background #f1f9f7
+  border-color #e0f1e9
+  color #1d9d74
 
 .flash.flash-error
   background #fee
@@ -16,10 +18,19 @@
   color rgb(184, 47, 47)
 
 .flash.flash-warning
-  background #ffe
-  border-color #dda
+  background #fcf8e3
+  border-color #faebcc
+  color #8a6d3b
 
 .flash.flash-info
   background #eef5fa
   border-color #cdf
 
+
+@keyframes appear
+  0%
+    opacity 0
+    transform translateY(-30px)
+  100%
+    opacity 1
+    transform translateY(0)
