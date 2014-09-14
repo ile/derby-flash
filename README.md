@@ -4,6 +4,9 @@ This is similar to [connect-flash](https://github.com/jaredhanson/connect-flash)
 
 Derby-flash should work along connect-flash; the messages from connect-flash will be accessible from this module.
 
+![image](https://cloud.githubusercontent.com/assets/433707/4265716/454049a8-3c5c-11e4-9c0a-9eb06539ed0a.png)
+
+
 ##Requirements
 
 - [Node.js](http://nodejs.org)
