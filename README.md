@@ -37,7 +37,7 @@ Currently the supported options are:
 
 This serves as an example stylesheet, import this from `index.styl` to use it. 
 ```css
-@import '../../node_modules/derby-ui-toast/css/'
+@import '../../node_modules/derby-flash'
 ```
 
 ###In templates
@@ -57,7 +57,7 @@ model.flash('error', 'An error happened!');
 
 (The MIT License)
 
-Copyright (c) 2013 Ilkka Huotari
+Copyright (c) 2013-2014 Ilkka Huotari
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
