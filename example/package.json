@@ -1,0 +1,17 @@
+{
+  "name": "example",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "derby": "^0.6.0-alpha24",
+    "derby-flash": "^0.8.1",
+    "derby-stylus": "^0.1.0",
+    "racer": "^0.6.0-alpha21"
+  }
+}

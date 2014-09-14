@@ -14,6 +14,15 @@ Derby-flash should work along connect-flash; the messages from connect-flash wil
 
 `npm install derby-flash`
 
+##Example app
+
+Try the example app in the `example` folder!
+
+```
+npm install
+node server.js
+```
+
 ##Usage
 
 ###Initialization
