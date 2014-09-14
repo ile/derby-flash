@@ -23,10 +23,10 @@ module.exports = (app, options) ->
 
 			model.del '_flash.flashq'
 
-		Model::flash = (type, msg) ->
+		Model::flash = (type, msg, useToast) ->
 			# set if msg present
 			if type and msg
-				if @req?.flash
+				if @req?.flash and not useToast
 					@req.flash type, msg
 				else
 					@root.push "_flash.flashq.#{type}", msg

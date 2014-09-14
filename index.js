@@ -37,10 +37,10 @@ module.exports = function(app, options) {
       return model.del('_flash.flashq');
     });
 
-    Model.prototype.flash = function(type, msg) {
+    Model.prototype.flash = function(type, msg, useToast) {
       var _ref;
       if (type && msg) {
-        if ((_ref = this.req) != null ? _ref.flash : void 0) {
+        if (((_ref = this.req) != null ? _ref.flash : void 0) && !useToast) {
           return this.req.flash(type, msg);
         } else {
           return this.root.push("_flash.flashq." + type, msg);
