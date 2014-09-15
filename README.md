@@ -22,7 +22,7 @@ Derby-flash should work along connect-flash; the messages from connect-flash wil
 Try the example app in the `example` folder!
 
 ```
-$npm install derby-flash
+npm install derby-flash
 cd node_modules/derby-flash/example
 npm install
 node server.js
