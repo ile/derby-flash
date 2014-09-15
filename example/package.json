@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "derby": "^0.6.0-alpha24",
-    "derby-flash": "^0.8.1",
+    "derby-flash": "*",
     "derby-stylus": "^0.1.0",
     "derby-starter": "*",
     "racer": "^0.6.0-alpha21"
