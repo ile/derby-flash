@@ -7,7 +7,9 @@ Model = racer.Model;
 
 module.exports = function(app, options) {
   var Flash;
-  options || (options = {});
+  if (options == null) {
+    options = {};
+  }
   return Flash = (function() {
     var middleware, originalRouter;
 
@@ -16,23 +18,21 @@ module.exports = function(app, options) {
     Flash.prototype.view = __dirname;
 
     app.on('render', function(app) {
-      var flashq, model, msg, type, _i, _len, _ref;
+      var flashq, model, obj, type, _i, _len, _ref;
       model = app.model;
       flashq = model.get('_flash.flashq') || {};
-      if (options.useToast && model.toast) {
-        if (flashq) {
-          for (type in flashq) {
-            _ref = flashq[type];
-            for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-              msg = _ref[_i];
-              if (options.useToast && model.toast) {
-                model.toast(type, msg);
-              }
+      if (flashq) {
+        for (type in flashq) {
+          _ref = flashq[type];
+          for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+            obj = _ref[_i];
+            if (typeof obj.msg === 'string' && model.toast && (options.useToast || obj.toast)) {
+              model.toast(type, obj.msg);
+            } else {
+              model.root.push("_page.flash." + type, obj.msg);
             }
           }
         }
-      } else {
-        model.root.set('_page.flash', flashq);
       }
       return model.del('_flash.flashq');
     });
@@ -43,26 +43,12 @@ module.exports = function(app, options) {
         if (((_ref = this.req) != null ? _ref.flash : void 0) && !useToast) {
           return this.req.flash(type, msg);
         } else {
-          return this.root.push("_flash.flashq." + type, msg);
+          return this.root.push("_flash.flashq." + type, {
+            msg: msg,
+            toast: useToast
+          });
         }
       }
-
-      /*
-      			else if type
-      				if @req?.flash
-      					@req.flash type
-      				else
-      					res = @root.get "_flash.flashq.#{type}"
-      					@root.del "_flash.flashq.#{type}"
-      					res
-      			else
-      				if @req?.flash
-      					@req.flash
-      				else
-      					all = @root.get "_flash.flashq"
-      					@root.del "_flash.flashq"
-      					all
-       */
     };
 
     originalRouter = app.router;
@@ -77,7 +63,9 @@ module.exports = function(app, options) {
           for (_i = 0, _len = _ref.length; _i < _len; _i++) {
             msg = _ref[_i];
             if (typeof msg === 'string') {
-              model.push("_flash.flashq." + type, msg);
+              model.push("_flash.flashq." + type, {
+                msg: msg
+              });
             } else {
               for (obj in msg) {
                 model.set("_flash.flashq." + type + "." + obj, msg[obj]);
