@@ -12,16 +12,20 @@ module.exports = (app, options = {}) ->
 
 			if flashq
 				for type of flashq
-					for obj in flashq[type]
-						if typeof obj.msg is 'string' and model.toast and (options.useToast or obj.toast)
-							model.toast type, obj.msg
-						else
-							model.root.push "_page.flash.#{type}", obj.msg
+					data = flashq[type]
+					# instanceof will fail in multi frame environments, but should be ok here
+					if data instanceof Array
+						for obj in data
+							if typeof obj.msg is 'string' and model.toast and (options.useToast or obj.toast)
+								model.toast type, obj.msg
+							else
+								model.root.push "_page.flash.#{type}", obj.msg
+					else
+						model.root.set "_page.flash.#{type}", data
 
 			model.del '_flash.flashq'
 
 		Model::flash = (type, msg, useToast) ->
-			# set if msg present
 			if type and msg
 				if @req?.flash and not useToast
 					@req.flash type, msg
