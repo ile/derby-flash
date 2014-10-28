@@ -42,10 +42,10 @@ module.exports = function(app, options) {
     });
 
     Model.prototype.flash = function(type, msg, useToast) {
-      var _ref;
+      var _ref, _ref1, _ref2;
       if (type && msg) {
-        if (((_ref = this.req) != null ? _ref.flash : void 0) && !useToast) {
-          return this.req.flash(type, msg);
+        if ((_ref = this.data) != null ? (_ref1 = _ref.$controller) != null ? (_ref2 = _ref1.req) != null ? _ref2.flash : void 0 : void 0 : void 0) {
+          return this.data.$controller.req.flash(type, msg);
         } else {
           return this.root.push("_flash.flashq." + type, {
             msg: msg,
