@@ -26,6 +26,14 @@ module.exports = (app, options = {}) ->
 			model.del '_flash.flashq'
 
 		Model::flash = (type, msg, useToast) ->
+			# support also function signature toast({ error: 'error message' }, useToast})
+			if typeof type is 'object'
+				useToast = msg
+				for own key, val of type
+					t = key
+					msg = val
+				type = t		
+
 			if type and msg
 				if @data?.$controller?.req?.flash
 					@data.$controller.req.flash type, msg
