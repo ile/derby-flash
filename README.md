@@ -7,6 +7,10 @@ Derby-flash should work along connect-flash; the messages from connect-flash wil
 ![image](https://cloud.githubusercontent.com/assets/433707/4265716/454049a8-3c5c-11e4-9c0a-9eb06539ed0a.png)
 
 
+##Demo
+
+https://derby-demos.herokuapp.com/derby-flash
+
 ##Requirements
 
 - [Node.js](http://nodejs.org)
